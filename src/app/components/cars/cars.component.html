@@ -15,8 +15,11 @@
     </div>
   </div>
 
+  <button class="btn btn-primary" (click)=toggle()>Toggle views</button>
 
-  <div class="card-container mb-5">
+
+<ng-container *ngIf="show">
+ <div class="card-container mb-5">
     <div class="card-group">
       <div class="card" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2) }">
         <img [src]="car.image_car" class="card-img-top" alt="{{car.name}}">
@@ -28,6 +31,7 @@
       </div>
     </div>
   </div>
+ </ng-container>
 
   <div class="table-container mb-5">
     <table class="table mt-3">
