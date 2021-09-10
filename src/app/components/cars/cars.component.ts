@@ -12,9 +12,9 @@ export class CarsComponent implements OnInit {
   carList: Car[]=[];
   searchText: string ='';
   filterCarlist: Car[]=[];
-  public show: boolean = false;
-  public hide: boolean = true;
-  public toggleButton: any = 'Show';
+  show: boolean = false;
+  hide: boolean = true;
+  toggleButton: any = 'Show';
 
   constructor(
     public dataService: DataService,
@@ -66,10 +66,6 @@ export class CarsComponent implements OnInit {
     this.show = !this.show;
 
     
-    if(this.show)  
-      this.toggleButton = "Show";
-    else
-      this.toggleButton = "Hide";
   }
 
 }
