@@ -6,8 +6,8 @@
         <span class="input-group-text" (click)="searchCar()">
           <i class="fa fa-search"></i>
         </span>
-        <input type="text" class="form-control" (keyup)="searchCar()" aria-label="Amount (to the nearest dollar)" 
-              placeholder="Search car" [(ngModel)]="searchText">
+        <input type="text" class="form-control" (keyup)="searchCar()" aria-label="Amount (to the nearest dollar)"
+          placeholder="Search car" [(ngModel)]="searchText">
         <span class="input-group-text" (click)="clearSearch()">
           <i class="fa fa-times"></i>
         </span>
@@ -15,26 +15,42 @@
     </div>
   </div>
 
+
+  <div class="card-container mb-5">
+    <div class="card-group">
+      <div class="card" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2) }">
+        <img [src]="car.image_car" class="card-img-top" alt="{{car.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{car.name}}</h5>
+          <p class="card-text">{{car.desc_excerpt}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-container mb-5">
     <table class="table mt-3">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">name</th>
-            <th scope="col">body_type</th>
-            <th scope="col">price</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let car of filterCarlist; let i=index">
-            <th scope="row">{{i + 1}}</th>
-            <td>{{car.name}}</td>
-            <td>{{car.body_type}}</td>
-            <td>{{car.currency}} {{car.price}}</td>
-            <td><button class="btn btn-sm btn-danger" 
-                       (click)="deleteCar(car.ref)">Delete</button></td>
-          </tr>
-        </tbody>
-      </table>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">name</th>
+          <th scope="col">body_type</th>
+          <th scope="col">price</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of filterCarlist; let i=index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{car.name}}</td>
+          <td>{{car.body_type}}</td>
+          <td>{{car.currency}} {{car.price}}</td>
+          <td><button class="btn btn-sm btn-danger" (click)="deleteCar(car.ref)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 
 </div>
