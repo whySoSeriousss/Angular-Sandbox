@@ -5,11 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './components/hello/hello.component';
+import { CarsComponent } from './components/cars/cars.component';
+import { NavComponent } from './components/shared/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent
+    HelloComponent,
+    CarsComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
