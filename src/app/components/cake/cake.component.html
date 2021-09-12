@@ -1,0 +1,36 @@
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+          <div class="input-group">
+            <span class="input-group-text" (click)="searchCake()">
+              <i class="fa fa-search"></i>
+            </span>
+            <input type="text" class="form-control" (keyup)="searchCake()"
+              placeholder="Search cakes" [(ngModel)]="searchCakeText">
+            <span class="input-group-text" (click)="clearCakeSearch()">
+              <i class="fa fa-times"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-container mb-5">
+        <div class="card-group">
+          <div class="card" *ngFor="let cake of filterCake; let i=index" [ngClass]="{'bg-success': (i%2)}">
+            <img [src]="cake.url" class="card-img-top" alt="{{cake.name}}">
+            <div class="card-body">
+              <h5 class="card-title">{{cake.name}} 
+                <app-c-modal [cakeDetails]="cake"></app-c-modal>
+              
+                <button class="btn btn-sm btn-danger" (click)="deleteCake(cake.id)">Delete</button>
+              </h5>
+              <p class="card-text">{{cake.category}}</p>
+              <a href="#" class="btn btn-primary">View Product</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+</div>

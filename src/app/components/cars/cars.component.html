@@ -18,20 +18,22 @@
   <button class="btn btn-primary" (click)=toggle()>Toggle views</button>
 
 
-<ng-container *ngIf="show">
- <div class="card-container mb-5">
+
+ <div class="card-container mb-5" *ngIf="show">
     <div class="card-group">
-      <div class="card" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2) }">
+      <div class="card" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2)}">
         <img [src]="car.image_car" class="card-img-top" alt="{{car.name}}">
         <div class="card-body">
-          <h5 class="card-title">{{car.name}}</h5>
+          <h5 class="card-title">{{car.name}} 
+            <app-modal [carDetails]="car"></app-modal>
+          </h5>
           <p class="card-text">{{car.desc_excerpt}}</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
     </div>
   </div>
- </ng-container>
+
 
  
   <div class="table-container mb-5" *ngIf="!show">
@@ -51,7 +53,14 @@
           <td>{{car.name}}</td>
           <td>{{car.body_type}}</td>
           <td>{{car.currency}} {{car.price}}</td>
-          <td><button class="btn btn-sm btn-danger" (click)="deleteCar(car.ref)">Delete</button></td>
+          <td>
+            <ng-template #btnDelete>
+              <p>
+                Lorem Ipsum is simply dummy text of the <span class="text-danger">printing and typesetting</span> industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+            </ng-template>
+            <button class="btn btn-sm btn-danger" (click)="deleteCar(car.ref)" [tooltip]="btnDelete">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>

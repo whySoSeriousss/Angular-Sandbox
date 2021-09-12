@@ -13,8 +13,7 @@ export class CarsComponent implements OnInit {
   searchText: string ='';
   filterCarlist: Car[]=[];
   show: boolean = false;
-  hide: boolean = true;
-  toggleButton: any = 'Show';
+  tooltipMessage="This is a delete button";
 
   constructor(
     public dataService: DataService,
@@ -37,7 +36,8 @@ export class CarsComponent implements OnInit {
 
   deleteCar(ref: string) {
     console.log('Reference: ', ref);
-    this.carList=this.carList.filter(car => car.ref != ref);
+    this.filterCarlist=this.carList.filter(car => car.ref != ref);
+    this.carList = this.filterCarlist;
     this.storage.set('cars', this.carList);
   }
 
@@ -63,9 +63,7 @@ export class CarsComponent implements OnInit {
   }
 
   toggle() {
-    this.show = !this.show;
-
-    
+    this.show = !this.show; 
   }
 
 }

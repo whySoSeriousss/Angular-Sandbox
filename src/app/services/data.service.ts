@@ -73,6 +73,36 @@ export class DataService {
     },
   ]
 
+  cakeList = [
+    {
+    id : "FB1",
+    name : "Donuts",
+    price: 1.99,
+    stock : 43,
+    category : "Breads",
+    special : true,
+    url : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Christmas_doughnut_%2815456531431%29.jpg/2560px-Christmas_doughnut_%2815456531431%29.jpg",
+    },
+    {
+    id : "FB2",
+    price: 22.5,
+    name : "Chocolate Cake",
+    stock : 23,
+    category : "Cakes", 
+    special : true,
+    url : "https://upload.wikimedia.org/wikipedia/commons/6/6b/Chocolate_Fondant.jpg",
+    },
+    {
+    id : "FB3",
+    price: 3.95,
+    name : "Baguette",
+    stock : 34,
+    category : "Breads", 
+    special : true,
+    url : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Baguette_de_pain%2C_WikiCheese_Lausanne.jpg/440px-Baguette_de_pain%2C_WikiCheese_Lausanne.jpg",
+    }
+    ]
+
   constructor(
     public storage: StorageService
   ) { }
@@ -83,5 +113,13 @@ export class DataService {
 
   seedCars() {
     this.storage.set('cars', this.carList);
+  }
+
+  getCake() {
+    return this.cakeList;
+  }
+
+  seedCake() {
+    this.storage.set('cake', this.cakeList);
   }
 }
