@@ -21,8 +21,8 @@
             <img [src]="cake.url" class="card-img-top" alt="{{cake.name}}">
             <div class="card-body">
               <h5 class="card-title">{{cake.name}} 
-                <app-c-modal [cakeDetails]="cake"></app-c-modal>
-              
+                <app-modal [cakeDetails]="cake"></app-modal>
+              <br>
                 <button class="btn btn-sm btn-danger" (click)="deleteCake(cake.id)">Delete</button>
               </h5>
               <p class="card-text">{{cake.category}}</p>

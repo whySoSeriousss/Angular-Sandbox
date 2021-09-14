@@ -1,3 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~font-awesome/css/font-awesome.css";
+
+$light-blue: #add8e6;
+$black: #000;
+$crimson: #990000;
+$indigo: #6610f2;
+
+.theme-blue {
+  background-color: $light-blue;
+  color: $black;
+  .nav-link,
+  .nav-brand {
+    color: $black;
+  }
+}
+
+.theme-danger {
+  @extend .navbar-dark;
+  @extend .bg-danger;
+}
+
+.theme-dark {
+  @extend .navbar-dark;
+  @extend .bg-dark;
+
+  .nav-link,
+  .nav-brand {
+    color: $crimson !important;
+  }
+}
+
+.theme-indigo {
+  background-color: $indigo;
+  color: $indigo;
+  .nav-link,
+  .nav-brand {
+    color: $indigo;
+  }
+}

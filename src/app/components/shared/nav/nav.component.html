@@ -1,4 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" 
+[ngClass]="{'theme-blue': currentTheme=='blue', 
+'theme-dark': currentTheme=='dark', 
+'theme-danger': currentTheme=='danger'}">
+
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,6 +18,13 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['cake']" routerLinkActive="active text-danger">Cakes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['profile']" routerLinkActive="active text-success">Profile</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['photo']" routerLinkActive="active text-success">Photo</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -51,7 +51,7 @@ export class DataService {
     {
       _id: '5f1d2a81cd48360017d8faea',
       ref: '30990',
-      name: 'Honday',
+      name: 'Audi',
       body_type: '2.0 TFSI quattro',
       engine: 'AUDI',
       mileage: '575',
@@ -60,7 +60,7 @@ export class DataService {
       door_count: '4',
       image_car: 'https://res.cloudinary.com/djzskjmzy/image/upload/v1597314245/ky5r5xcdcotkltn4yvst.jpg',
       price: 133364560.3,
-      slug: 'Honday',
+      slug: 'Audi',
       description:
         'We’re supporting health care providers by donating protective equipment and making protective face shields. We’re also pledging $1 million to food banks and encouraging our associates to volunteer remotely.\nAre zindagi mein ka baa...\nDuniyaa mein ka baa...\nDuniyaa mein ka baa...\nKhale pile!\nKhale... Khale!!!\nPile... Pile!!!',
       desc_excerpt:

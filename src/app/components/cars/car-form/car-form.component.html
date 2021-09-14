@@ -1,0 +1,176 @@
+<div class="container mt-5 mb-5">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-plus"></i>Add Card Details
+        </div>
+        <div class="card-body">
+            <form *ngIf="carForm" [formGroup]="carForm">
+                
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Validation for input name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">ngValid <span *ngIf="carForm.controls.name.valid"> 
+                            <i class="fa fa-check-circle text-success ml-2"></i></span></th>
+                        <td>ngInvalid<span *ngIf="carForm.controls.name.invalid"> <i class="fa fa-check-circle text-success ml-2"></i></span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">ngDirty <span *ngIf="carForm.controls.name.dirty"> <i class="fa fa-check-circle text-success ml-2"></i></span></th>
+                        <td>ngPristine <span *ngIf="carForm.controls.name.pristine"> <i class="fa fa-check-circle text-success ml-2"></i></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">ngTouched <span *ngIf="carForm.controls.name.touched"> <i class="fa fa-check-circle text-success ml-2"></i></span></th>
+                        <td colspan="2">ngUntouched <span *ngIf="carForm.controls.name.untouched"> <i class="fa fa-check-circle text-success ml-2"></i> </span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name <sup class="text-danger">*</sup></label>
+                  <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" [ngClass]="{'is-invalid': carForm.controls.name.invalid && carForm.controls.name.dirty, 'is-valid': carForm.controls.name.valid}"> 
+                  <span *ngIf="carForm.controls.name.invalid && carForm.controls.name.dirty"  class="text-danger">
+                      Name is required!
+                  </span>
+                </div>
+
+                <div class="mb-3">
+                  <label for="ref" class="form-label">Ref <sup class="text-danger">*</sup> </label>
+                  <input formControlName="ref" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.ref.invalid && carForm.controls.ref.dirty, 'is-valid': carForm.controls.ref.valid}">
+                  <span *ngIf="carForm.controls.ref.invalid && carForm.controls.ref.dirty"  class="text-danger">
+                      Ref is required!
+                  </span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="desc_excerpt" class="form-label">Description excerpt <sup class="text-danger">*</sup> </label>
+                    <input formControlName="desc_excerpt" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.desc_excerpt.invalid && carForm.controls.desc_excerpt.dirty, 'is-valid': carForm.controls.desc_excerpt.valid}">
+                    <span *ngIf="carForm.controls.desc_excerpt.invalid && carForm.controls.desc_excerpt.dirty" class="text-danger">
+                        Description excerpt is required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Description <sup class="text-danger">*</sup> </label>
+                    <input formControlName="description" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.description.invalid && carForm.controls.description.dirty}">
+                    <span *ngIf="carForm.controls.description.invalid && carForm.controls.description.dirty">
+                        Description is required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date_online" class="form-label">Date Online <sup class="text-danger">*</sup> </label>
+                    <input formControlName="date_online" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.date_online.invalid && carForm.controls.date_online.dirty}">
+                    <span *ngIf="carForm.controls.date_online.invalid && carForm.controls.date_online.dirty">
+                        Online Date is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="date_offline" class="form-label">Date Offline <sup class="text-danger">*</sup> </label>
+                    <input formControlName="date_offline" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.date_offline.invalid && carForm.controls.date_offline.dirty}">
+                    <span *ngIf="carForm.controls.date_offline.invalid && carForm.controls.date_offline.dirty">
+                        Offline Date is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="currency" class="form-label">Currency <sup class="text-danger">*</sup> </label>
+                    <input formControlName="currency" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.currency.invalid && carForm.controls.currency.dirty}">
+                    <span *ngIf="carForm.controls.currency.invalid && carForm.controls.currency.dirty">
+                        Currency is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="contact_phone" class="form-label">Phone <sup class="text-danger">*</sup> </label>
+                    <input formControlName="contact_phone" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.contact_phone.invalid && carForm.controls.contact_phone.dirty}">
+                    <span *ngIf="carForm.controls.contact_phone.invalid && carForm.controls.contact_phone.dirty">
+                        Phone Number is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="contact_email" class="form-label">Email Address <sup class="text-danger">*</sup> </label>
+                    <input formControlName="contact_email" type="email" class="form-control" [ngClass]="{'is-invalid': carForm.controls.contact_email.invalid && carForm.controls.contact_email.dirty}">
+                    <span *ngIf="carForm.controls.contact_email.invalid && carForm.controls.contact_email.dirty">
+                        Email is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="body_type" class="form-label">Body Type <sup class="text-danger">*</sup> </label>
+                    <input formControlName="body_type" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.body_type.invalid && carForm.controls.body_type.dirty}">
+                    <span *ngIf="carForm.controls.body_type.invalid && carForm.controls.body_type.dirty">
+                        Body Type is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="engine" class="form-label">Engine <sup class="text-danger">*</sup> </label>
+                    <input formControlName="engine" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.engine.invalid && carForm.controls.engine.dirty}">
+                    <span *ngIf="carForm.controls.engine.invalid && carForm.controls.engine.dirty">
+                        Engine Type is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="mileage" class="form-label">Mileage <sup class="text-danger">*</sup> </label>
+                    <input formControlName="mileage" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.mileage.invalid && carForm.controls.mileage.dirty}">
+                    <span *ngIf="carForm.controls.mileage.invalid && carForm.controls.mileage.dirty">
+                        Mileage Type is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="fuel_type" class="form-label">Fuel Type <sup class="text-danger">*</sup> </label>
+                    <input formControlName="fuel_type" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.fuel_type.invalid && carForm.controls.fuel_type.dirty}">
+                    <span *ngIf="carForm.controls.fuel_type.invalid && carForm.controls.fuel_type.dirty">
+                        Fuel Type is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="transmission" class="form-label">Transmission <sup class="text-danger">*</sup> </label>
+                    <input formControlName="transmission" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.transmission.invalid && carForm.controls.transmission.dirty}">
+                    <span *ngIf="carForm.controls.transmission.invalid && carForm.controls.transmission.dirty">
+                        Transmission is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="door_count" class="form-label">Door Count <sup class="text-danger">*</sup> </label>
+                    <input formControlName="door_count" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.door_count.invalid && carForm.controls.door_count.dirty}">
+                    <span *ngIf="carForm.controls.door_count.invalid && carForm.controls.door_count.dirty">
+                        Door Count is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="image_car" class="form-label">Image Car <sup class="text-danger">*</sup> </label>
+                    <input formControlName="image_car" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.image_car.invalid && carForm.controls.image_car.dirty}">
+                    <span *ngIf="carForm.controls.image_car.invalid && carForm.controls.image_car.dirty">
+                        Image is Required!
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="price" class="form-label">Price <sup class="text-danger">*</sup></label>
+                    <input formControlName="price" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.price.invalid && carForm.controls.price
+                    .dirty}">
+                    <span *ngIf="carForm.controls.price.invalid && carForm.controls.price
+                    .dirty">
+                        Image is Required!
+                    </span>
+                  </div>
+
+                <button [disabled]="carForm.invalid" class="btn btn-success" (click)="saveCar()"><i class="fa fa-plus"></i> Add</button>
+                <button  class="btn btn-danger ms-3" [routerLink]="['/cars']"><i class="fa fa-times"></i> Cancel</button>
+              </form>
+        </div>
+    </div>
+</div>

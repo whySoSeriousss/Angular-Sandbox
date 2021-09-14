@@ -18,9 +18,5 @@ export class StorageService {
       if (stringValue!=null){
         return JSON.parse(stringValue);
       }
-       
-
-  }
-
- 
+  } 
 }
