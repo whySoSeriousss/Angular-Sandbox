@@ -31,16 +31,16 @@
   </div>
 
 
- <div class="card-container mb-5" *ngIf="show">
-    <div class="card-group">
-      <div class="card" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2)}">
+ <div class="card-container mb-5 mt-3" *ngIf="show">
+    <div class="row row-cols-3">
+      <div class="card col" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2)}">
         <img [src]="car.image_car" class="card-img-top" alt="{{car.name}}">
         <div class="card-body">
           <h5 class="card-title">{{car.name}} 
             <app-modal [carDetails]="car"></app-modal>
           </h5>
           <p class="card-text">{{car.desc_excerpt}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a [routerLink]="['/car/edit/', car.slug]" class="btn btn-primary"><i class="fa fa-pencil me-2"></i>Edit</a>
         </div>
       </div>
     </div>

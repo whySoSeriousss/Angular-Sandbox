@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'cake', component: CakeComponent},
   {path: 'cars/add', component: CarFormComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'car/edit/:slug', component: CarFormComponent}
 
 ];
 

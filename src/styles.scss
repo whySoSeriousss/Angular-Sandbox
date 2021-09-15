@@ -42,8 +42,7 @@ $indigo: #6610f2;
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
+  height: 200px;
+  margin-top: -200px;
 }

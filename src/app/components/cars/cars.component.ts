@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { Car } from '../../models/car';
 import { DataService } from '../../services/data.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-cars',
@@ -17,21 +18,35 @@ export class CarsComponent implements OnInit {
 
   constructor(
     public dataService: DataService,
-    public storage: StorageService
+    public storage: StorageService,
+    public api: ApiService
   ) { }
 
   ngOnInit(): void {
     // this.carList=this.dataService.getCars();
-    this.carList=this.storage.get('cars');
+    this.getCars();
+    // this.carList=this.storage.get('cars');
     
 
-    if(!this.carList || !this.carList.length){
-      this.dataService.seedCars();
-      this.carList=this.storage.get('cars');
+    // if(!this.carList || !this.carList.length){
+    //   this.dataService.seedCars();
+    //   this.carList=this.storage.get('cars');
       
-    }
-    this.filterCarlist=this.carList;
+    // }
+    
       
+  }
+
+  getCars() {
+    this.api.request('carList', 'get').subscribe((cars: {[endpoints: string]: any}) =>{
+      console.log("cars from server:", cars);
+
+      if (cars){
+        this.carList = cars['data'];
+      
+        this.filterCarlist=this.carList;
+      }
+    });
   }
 
   deleteCar(ref: string) {

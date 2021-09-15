@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-car-form',
@@ -8,12 +10,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CarFormComponent implements OnInit {
   carForm?: FormGroup;
+  carSlug?: string | null ='';
 
   constructor(
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public api: ApiService,
+    public activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.carSlug = this.activatedRoute.snapshot.paramMap.get('slug');
+    console.log('car slug:', this.carSlug);
+
     this.carForm = this.formBuilder.group({
       ref: ['', Validators.required],
       name: ['', Validators.required],
@@ -37,6 +45,10 @@ export class CarFormComponent implements OnInit {
 
   saveCar() {
     console.log('value of carForm', this.carForm?.value);
+
+    this.api.request('addCar', 'post', this.carForm?.value).subscribe(result => {
+      console.log('Add Car Result: ', result);
+    });
   }
 
 }
