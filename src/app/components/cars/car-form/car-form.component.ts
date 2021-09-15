@@ -22,6 +22,13 @@ export class CarFormComponent implements OnInit {
     this.carSlug = this.activatedRoute.snapshot.paramMap.get('slug');
     console.log('car slug:', this.carSlug);
 
+    this.api.getCarList().subscribe((cars: {[endpoint: string]: any}) => {
+      console.log('Edits being done to: ', cars['data'].filter((car: {
+        slug: string | null | undefined;
+      }) => car.slug == this.carSlug
+      ));
+    })
+
     this.carForm = this.formBuilder.group({
       ref: ['', Validators.required],
       name: ['', Validators.required],
