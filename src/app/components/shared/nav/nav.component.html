@@ -42,9 +42,13 @@
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="d-flex" *ngIf="loginForm"  [formGroup]="loginForm">
+        
+          <input formControlName="email" class="form-control me-2" type="email" placeholder="Email" aria-label="Search">
+
+          <input formControlName="password" class="form-control me-2" type="password" placeholder="Password" aria-label="Search">
+
+          <button (click)="loginButton()" class="btn btn-outline-success">Login</button>
         </form>
       </div>
     </div>

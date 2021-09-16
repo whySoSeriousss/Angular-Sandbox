@@ -17,7 +17,10 @@ export class ApiService {
  endpoints: {[endpoints: string]: string | any} = {
    carList: `${this.baseUrl}car/list`,
    addCar: `${this.baseUrl}car/add-car`,
-   carDetails: (slug: string) => `${this.baseUrl}car/${slug}`
+   carDetails: (slug: string) => `${this.baseUrl}car/${slug}`,
+   editCar: (slug:string) => `${this.baseUrl}car/edit_temp/${slug}`,
+   imageUpload: `${this.baseUrl}car/img-upload`,
+   login: `${this.baseUrl}user/signin`,
  };
 
  getCarList(): Observable<any> {
@@ -29,11 +32,14 @@ export class ApiService {
   // this.http.get(this.endpoints.carList);
   // this.http['get'](this.endpoints['carList']);
 
-  const finalUrl = (!urlParams) ? this.endpoints[url] : this.endpoints[url](urlParams);
-  return (!payload) ? this.http.request(method, finalUrl) : this.http.request(method, finalUrl, {body: payload});
+  const finalUrl = (!urlParams)
+   ? this.endpoints[url] : this.endpoints[url](urlParams);
+   
+  return (!payload) ? 
+  this.http.request(method, finalUrl) : this.http.request(method, finalUrl, {body: payload});
 
  }
 
 }
 
-export type endpointType = 'carList' | 'addCar' | 'carDetails';
+export type endpointType = 'carList' | 'addCar' | 'carDetails' | 'editCar' | 'imageUpload' | 'login';

@@ -38,13 +38,33 @@
                   </span>
                 </div>
 
-                <div class="mb-3">
-                  <label for="ref" class="form-label">Ref <sup class="text-danger">*</sup> </label>
-                  <input formControlName="ref" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.ref.invalid && carForm.controls.ref.dirty, 'is-valid': carForm.controls.ref.valid}">
-                  <span *ngIf="carForm.controls.ref.invalid && carForm.controls.ref.dirty"  class="text-danger">
+                <div class="mb-3" *ngIf ="carSlug">
+                  <label for="ref" class="form-label">Ref<sup class="text-danger">*</sup></label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  formControlName="ref" 
+                  *ngIf ="carSlug" 
+                  readonly
+                  [ngClass]=
+                  "{'is-invalid':carForm.controls.ref.invalid && carForm.controls.ref.dirty, 'is-valid': carForm.controls.ref.valid }">
+                  <span 
+                  *ngIf="carForm.controls.ref.invalid && carForm.controls.ref.dirty" 
+                  class="text-danger">
                       Ref is required!
                   </span>
-                </div>
+
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  formControlName="ref" 
+                  *ngIf ="!carSlug"
+                  [ngClass]="{'is-invalid':carForm.controls.ref.invalid && carForm.controls.ref.dirty, 'is-valid': carForm.controls.ref.valid }">
+                  <span *ngIf="carForm.controls.ref.invalid && carForm.controls.ref.dirty" 
+                  class="text-danger">
+                      Ref is required!
+                  </span>
+              </div>
 
                 <div class="mb-3">
                     <label for="desc_excerpt" class="form-label">Description excerpt <sup class="text-danger">*</sup> </label>
@@ -151,12 +171,26 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="image_car" class="form-label">Image Car <sup class="text-danger">*</sup> </label>
-                    <input formControlName="image_car" type="text" class="form-control" [ngClass]="{'is-invalid': carForm.controls.image_car.invalid && carForm.controls.image_car.dirty}">
-                    <span *ngIf="carForm.controls.image_car.invalid && carForm.controls.image_car.dirty">
-                        Image is Required!
-                    </span>
-                  </div>
+                    <label for="image_car" class="form-label">Image Car <sup class="text-danger">*</sup></label>
+
+                    <div class="row">
+                      <div class="col-8"> 
+                        <input  
+                        type="file" 
+                        class="form-control" 
+                        (change)="uploadImage($event)"
+                        [ngClass]="{'is-invalid': carForm.controls.image_car.invalid && carForm.controls.image_car.dirty}">
+                      
+                        <span *ngIf="carForm.controls.image_car.invalid && carForm.controls.image_car.dirty">
+                          Image is Required!
+                      </span>
+                    </div>
+
+                      <div class="col-4">
+                        <img [src]="carDetails?.image_car" alt="{{carDetails?.name}}" class="img-fluid">
+                      </div>
+                    </div>
+                   </div>
 
                   <div class="mb-3">
                     <label for="price" class="form-label">Price <sup class="text-danger">*</sup></label>
@@ -164,12 +198,22 @@
                     .dirty}">
                     <span *ngIf="carForm.controls.price.invalid && carForm.controls.price
                     .dirty">
-                        Image is Required!
+                        Price is Required!
                     </span>
                   </div>
 
-                <button [disabled]="carForm.invalid" class="btn btn-success" (click)="saveCar()"><i class="fa fa-plus"></i> Add</button>
-                <button  class="btn btn-danger ms-3" [routerLink]="['/cars']"><i class="fa fa-times"></i> Cancel</button>
+                <button 
+                [disabled]="carForm.invalid"
+                class="btn btn-success" 
+                *ngIf="!carSlug" 
+                (click)="saveCar()">
+                <i class="fa fa-plus"></i> 
+                Add
+              </button>
+
+                <button [disabled]="carForm.invalid" class="btn btn-primary" *ngIf="carSlug" (click)="editCar()"><i class="fa fa-pencil"></i>Edit</button>
+
+                <button  class="btn btn-primary ms-3" [routerLink]="['/cars']"><i class="fa fa-times"></i> Cancel</button>
               </form>
         </div>
     </div>

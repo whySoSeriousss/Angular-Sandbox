@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Car } from '../../../models/car';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { ApiService } from 'src/app/services/api.service';
 export class CarFormComponent implements OnInit {
   carForm?: FormGroup;
   carSlug?: string | null ='';
+  selectedCar?: any;
+  carDetails?: any; 
 
   constructor(
     public formBuilder: FormBuilder,
@@ -19,15 +22,42 @@ export class CarFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.carSlug = this.activatedRoute.snapshot.paramMap.get('slug');
-    console.log('car slug:', this.carSlug);
 
-    this.api.getCarList().subscribe((cars: {[endpoint: string]: any}) => {
-      console.log('Edits being done to: ', cars['data'].filter((car: {
-        slug: string | null | undefined;
-      }) => car.slug == this.carSlug
-      ));
-    })
+    this.carSlug = this.activatedRoute.snapshot.paramMap.get('slug');
+    if (this.carSlug) {
+      this.getCarDetails(this.carSlug);
+      console.log("Car slug: ", this.carSlug);
+    }
+
+  //   if (this.activatedRoute.snapshot.paramMap.get('slug')) {
+  //     this.carSlug = this.activatedRoute.snapshot.paramMap.get('slug');
+  //     console.log("Car slug: ", this.carSlug);
+ 
+  //     this.api.request('carDetails', 'get', undefined, this.carSlug).subscribe(car => {
+  //       this.selectedCar = car;
+  //       console.log('Edits being done on: ', this.selectedCar);
+ 
+  //       if(car){
+  //         this.carForm?.patchValue(car);
+  //         this.carDetails = car;
+  //       }
+  //     });
+  // }
+
+
+    // this.api.getCarList().subscribe((cars: {[endpoint: string]: any}) => {
+    //   console.log('Edits being done to: ', cars['data'].filter((car: {
+    //     slug: string | null | undefined;
+    //   }) => car.slug == this.carSlug
+    //   ));
+
+    //   if (cars){
+    //     this.carForm?.patchValue(cars);
+    //   }
+      
+    // })
+
+    
 
     this.carForm = this.formBuilder.group({
       ref: ['', Validators.required],
@@ -50,12 +80,60 @@ export class CarFormComponent implements OnInit {
     });
   }
 
+
+
   saveCar() {
     console.log('value of carForm', this.carForm?.value);
 
     this.api.request('addCar', 'post', this.carForm?.value).subscribe(result => {
       console.log('Add Car Result: ', result);
     });
+  }
+
+  async getCarDetails(slug: string) {
+
+    // this.api.request('carDetails', 'get', undefined, slug).subscribe(car => {
+    //   this.selectedCar = car;
+    //   console.log('Edits being done on: ', this.selectedCar);
+ 
+    //   if (car) {
+    //     this.carForm?.patchValue(car)
+    //     this.carDetails = car;
+    //   }
+    // });
+
+    const results = await this.api.request('carDetails', 'get', undefined, slug).toPromise();
+
+    console.log('To Promise Work: ', results);
+
+    if (results) {
+      this.carForm?.patchValue(results);
+      this.carDetails = results;
+    }
+  }
+
+  editCar() {
+    this.api.request('editCar', 'put', this.carForm?.value, this.carSlug).subscribe(result =>{
+      console.log('Edit Car: ', result);
+    });
+  }
+
+  uploadImage(event: any) {
+    console.log('upload image event: ', event.target.files[0]);
+    const fileUpload = event.target.files[0];
+    const formData: FormData = new FormData();
+    formData.append('image', fileUpload, fileUpload.name);
+
+    if(fileUpload){
+      this.api.request('imageUpload', 'post', formData).subscribe((results:any) => {
+        //console.log("Image upload results:", results);
+        console.log('Car image details:', this.carDetails);
+        console.log("Image upload secure_url:", results['secure_url']);
+        this.carDetails.image_car = results['secure_url'];
+        
+        this.carForm?.controls.image_car.setValue(results['secure_url']);
+      })
+    }
   }
 
 }
