@@ -17,6 +17,7 @@ export class NavComponent implements OnInit {
   password?: string;
   recipient?: object;
   validLogin?: boolean = false;
+  user: any = {};
 
   constructor(
     public settingService: SettingsService,
@@ -48,6 +49,13 @@ export class NavComponent implements OnInit {
       this.validLogin = true;
     }
 
+    const userResult = this.storageService.get('user');
+    if(userResult){
+      this.user = userResult;
+      this.validLogin = true;
+      console.log(this.validLogin);
+    }
+
     
   }
 
@@ -75,6 +83,7 @@ export class NavComponent implements OnInit {
   }
 
   logOut(){
+    console.log('User logged Out!',);
     this.validLogin = false;
     this.storageService.delete('token');
     this.storageService.delete('user');

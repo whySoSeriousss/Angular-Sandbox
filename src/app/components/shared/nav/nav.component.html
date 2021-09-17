@@ -48,13 +48,17 @@
 
           <input formControlName="password" class="form-control me-2" type="password" placeholder="Password" aria-label="Search">
 
-          <div *ngIf= "validLogin">
-            <p>Welcome Angular Devs!</p>
-            <button class="btn btn-danger" (click) = "logOut()">Logout</button>
-          </div>
-
+          
           <button (click)="loginButton()" class="btn btn-outline-success">Login</button>
         </form>
+
+        <div *ngIf= "validLogin">
+          <h5>Welcome {{user.first_name}} {{user.last_name}}
+            <button class="btn btn-danger" (click)="logOut()"><i class="fa fa-power-off"></i></button>
+          </h5>
+          
+        </div>
+
       </div>
     </div>
   </nav>
