@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { SettingsService } from 'src/app/services/settings.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-nav',
@@ -15,11 +16,13 @@ export class NavComponent implements OnInit {
   email?: string;
   password?: string;
   recipient?: object;
+  validLogin?: boolean = false;
 
   constructor(
     public settingService: SettingsService,
     public apiService: ApiService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public storageService: StorageService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +43,11 @@ export class NavComponent implements OnInit {
 
     });
 
+    if (this.storageService.get('token') && this.storageService.get('user')){
+
+      this.validLogin = true;
+    }
+
     
   }
 
@@ -47,17 +55,30 @@ export class NavComponent implements OnInit {
     this.email = this.loginForm?.controls.email.value;
     this.password = this.loginForm?.controls.password.value;
 
-    // this.apiService.request('login', 'post', { "email": "angular@yopmail.com",    "password": "1qaz0okm!" } ).subscribe(
+    this.recipient = {"email": this.email, "password": this.password};
+  
+    this.apiService.request('login', 'post', this.recipient).subscribe((recipient: {[key: string]: string | any}) =>{
+    console.log('Results: ', recipient);
+    if (recipient) {
+      this.storageService.set('token', recipient['token']);
+      this.storageService.set('user', recipient['user']);
+      this.validLogin = true;
+    }
+
+    });
+
+       // this.apiService.request('login', 'post', { "email": "angular@yopmail.com",    "password": "1qaz0okm!" } ).subscribe(
     //   result => {
     //     console.log('results are: ', result);
     //   }
     // )
+  }
 
-    this.recipient = {"email": this.email, "password": this.password};
-  
-    this.apiService.request('login', 'post', this.recipient).subscribe(result =>{
-    console.log(result);
-    });
+  logOut(){
+    this.validLogin = false;
+    this.storageService.delete('token');
+    this.storageService.delete('user');
+    
   }
 
   }

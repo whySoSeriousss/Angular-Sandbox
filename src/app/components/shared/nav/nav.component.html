@@ -42,11 +42,16 @@
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex" *ngIf="loginForm"  [formGroup]="loginForm">
+        <form class="d-flex" *ngIf="loginForm && !validLogin"  [formGroup]="loginForm">
         
           <input formControlName="email" class="form-control me-2" type="email" placeholder="Email" aria-label="Search">
 
           <input formControlName="password" class="form-control me-2" type="password" placeholder="Password" aria-label="Search">
+
+          <div *ngIf= "validLogin">
+            <p>Welcome Angular Devs!</p>
+            <button class="btn btn-danger" (click) = "logOut()">Logout</button>
+          </div>
 
           <button (click)="loginButton()" class="btn btn-outline-success">Login</button>
         </form>
