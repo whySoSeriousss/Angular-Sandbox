@@ -25,7 +25,7 @@ export class CarFormComponent implements OnInit {
 
     this.carSlug = this.activatedRoute.snapshot.paramMap.get('slug');
     if (this.carSlug) {
-      this.getCarDetails(this.carSlug);
+      this.getCarDetails();
       console.log("Car slug: ", this.carSlug);
     }
 
@@ -90,7 +90,7 @@ export class CarFormComponent implements OnInit {
     });
   }
 
-  async getCarDetails(slug: string) {
+  async getCarDetails() {
 
     // this.api.request('carDetails', 'get', undefined, slug).subscribe(car => {
     //   this.selectedCar = car;
@@ -102,7 +102,7 @@ export class CarFormComponent implements OnInit {
     //   }
     // });
 
-    const results = await this.api.request('carDetails', 'get', undefined, slug).toPromise();
+    const results = await this.api.request('carDetails', 'get', undefined, this.carSlug).toPromise();
 
     console.log('To Promise Work: ', results);
 
