@@ -18,7 +18,7 @@ export class ApiService {
    carList: `${this.baseUrl}car/list`,
    addCar: `${this.baseUrl}car/add-car`,
    carDetails: (slug: string) => `${this.baseUrl}car/${slug}`,
-   editCar: (slug:string) => `${this.baseUrl}car/edit_temp/${slug}`,
+   editCar: (slug:string) => `${this.baseUrl}car/edit/${slug}`,
    imageUpload: `${this.baseUrl}car/img-upload`,
    login: `${this.baseUrl}user/signin`,
  };

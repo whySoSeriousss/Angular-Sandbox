@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,9 @@ import { CModalComponent } from './components/shared/c-modal/c-modal.component';
 import { CarFormComponent } from './components/cars/car-form/car-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { interceptorsProviders } from './interceptors/interceptors';
+import { LoadingComponent } from './components/shared/loading/loading.component';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     CModalComponent,
     CarFormComponent,
     ProfileComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingComponent
 
   ],
   imports: [
@@ -38,9 +42,12 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     ReactiveFormsModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgxLoadingModule.forRoot({})
+    
+  
   ],
-  providers: [],
+  providers: [interceptorsProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
