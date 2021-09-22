@@ -12,14 +12,20 @@ $indigo: #6610f2;
   background-color: $light-blue;
   color: $black;
   .nav-link,
-  .nav-brand {
-    color: $black;
+  .nav-brand,
+  .loginText,
+  .regBtn {
+    color: $black !important;
   }
 }
 
 .theme-danger {
   @extend .navbar-dark;
   @extend .bg-danger;
+
+  .regBtn {
+    color: $black !important;
+  }
 }
 
 .theme-dark {
@@ -27,7 +33,9 @@ $indigo: #6610f2;
   @extend .bg-dark;
 
   .nav-link,
-  .nav-brand {
+  .nav-brand,
+  .loginText,
+  .regBtn {
     color: $crimson !important;
   }
 }
@@ -36,13 +44,19 @@ $indigo: #6610f2;
   background-color: $indigo;
   color: $indigo;
   .nav-link,
-  .nav-brand {
-    color: $indigo;
+  .nav-brand,
+  .loginText,
+  .regBtn {
+    color: rgb(255, 255, 255) !important;
   }
 }
 
 footer {
-  position: relative;
+  position: -ms-page;
   height: 200px;
   margin-top: -200px;
+}
+
+.regBtn {
+  width: 100px;
 }

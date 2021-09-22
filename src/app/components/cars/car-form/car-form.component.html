@@ -1,7 +1,8 @@
 <div class="container mt-5 mb-5">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-plus"></i>Add Card Details
+            <i class="fa fa-plus"></i>
+            Add Card Details
         </div>
         <div class="card-body">
             <form *ngIf="carForm" [formGroup]="carForm">
@@ -32,6 +33,7 @@
 
                 <div class="mb-3">
                   <label for="name" class="form-label">Name <sup class="text-danger">*</sup></label>
+
                   <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" [ngClass]="{'is-invalid': carForm.controls.name.invalid && carForm.controls.name.dirty, 'is-valid': carForm.controls.name.valid}"> 
                   <span *ngIf="carForm.controls.name.invalid && carForm.controls.name.dirty"  class="text-danger">
                       Name is required!
@@ -213,7 +215,7 @@
 
                 <button [disabled]="carForm.invalid" class="btn btn-primary" *ngIf="carSlug" (click)="editCar()"><i class="fa fa-pencil"></i>Edit</button>
 
-                <button  class="btn btn-primary ms-3" [routerLink]="['/cars']"><i class="fa fa-times"></i> Cancel</button>
+                <button  class="btn btn-danger ms-3" [routerLink]="['/cars']"><i class="fa fa-times"></i> Cancel</button>
               </form>
         </div>
     </div>

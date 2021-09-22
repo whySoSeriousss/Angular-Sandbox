@@ -19,6 +19,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { interceptorsProviders } from './interceptors/interceptors';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { NgxLoadingModule } from 'ngx-loading';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NgxLoadingModule } from 'ngx-loading';
     CarFormComponent,
     ProfileComponent,
     FooterComponent,
-    LoadingComponent
+    LoadingComponent,
+    RegisterComponent
 
   ],
   imports: [

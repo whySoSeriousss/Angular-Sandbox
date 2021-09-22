@@ -5,32 +5,38 @@
 'theme-indigo': currentTheme=='indigo'}">
 
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+
+      <a class="navbar-brand" href="#">SDWorx</a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
           <li class="nav-item">
             <a class="nav-link" aria-current="page" [routerLink]="['hello']" routerLinkActive="active">Home</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['cars']" routerLinkActive="active text-primary">Cars</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['cake']" routerLinkActive="active text-danger">Cakes</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['profile']" routerLinkActive="active text-success">Profile</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['photo']" routerLinkActive="active text-success">Photo</a>
-          </li>
           <li class="nav-item dropdown">
+
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
+
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -38,27 +44,36 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
+        </ul>  
+
+        <ng-template #btnDelete>
+          <p>
+            New User? <span class="text-danger">Click to Register!</span> 
+          </p>
+        </ng-template>
+
+        <button *ngIf="!validLogin" class="btn btn-outline-primary regBtn" [routerLink]="['register/signup']" [tooltip]="btnDelete">
+          <i class="fa fa-registered"></i>
+        </button>
+
+
         <form class="d-flex" *ngIf="loginForm && !validLogin"  [formGroup]="loginForm">
-        
+
+        <!-- passwrd: 1qaz0okm! -->
+
           <input formControlName="email" class="form-control me-2" type="email" placeholder="Email" aria-label="Search">
 
           <input formControlName="password" class="form-control me-2" type="password" placeholder="Password" aria-label="Search">
 
-          
           <button (click)="loginButton()" class="btn btn-outline-success">Login</button>
+
         </form>
 
         <div *ngIf= "validLogin">
-          <h5>Welcome {{user.first_name}} {{user.last_name}}
+          <h5 class="loginText">Welcome {{user.first_name}} {{user.last_name}}
             <button class="btn btn-danger" (click)="logOut()"><i class="fa fa-power-off"></i></button>
           </h5>
-          
         </div>
-
       </div>
     </div>
   </nav>

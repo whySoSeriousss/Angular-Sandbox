@@ -5,6 +5,7 @@ import { CarFormComponent } from './components/cars/car-form/car-form.component'
 import { CarsComponent } from './components/cars/cars.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'cake', component: CakeComponent},
   {path: 'cars/add', component: CarFormComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'car/edit/:slug', component: CarFormComponent}
+  {path: 'car/edit/:slug', component: CarFormComponent},
+  {path: 'register/signup', component: RegisterComponent } 
 
 ];
 

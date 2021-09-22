@@ -54,9 +54,7 @@ export class NavComponent implements OnInit {
       this.user = userResult;
       this.validLogin = true;
       console.log(this.validLogin);
-    }
-
-    
+    }    
   }
 
   loginButton() {
@@ -86,8 +84,7 @@ export class NavComponent implements OnInit {
     console.log('User logged Out!',);
     this.validLogin = false;
     this.storageService.delete('token');
-    this.storageService.delete('user');
-    
+    this.storageService.delete('user');  
   }
 
   }
