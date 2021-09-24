@@ -21,7 +21,8 @@ export class ApiService {
    editCar: (slug:string) => `${this.baseUrl}car/edit/${slug}`,
    imageUpload: `${this.baseUrl}car/img-upload`,
    login: `${this.baseUrl}user/signin`,
-   register: `${this.baseUrl}user/signup`
+   register: `${this.baseUrl}user/signup`,
+   deleteCar:(id:string) => `${this.baseUrl}car/delete/${id}`
  };
 
  getCarList(): Observable<any> {
@@ -43,4 +44,4 @@ export class ApiService {
 
 }
 
-export type endpointType = 'carList' | 'addCar' | 'carDetails' | 'editCar' | 'imageUpload' | 'login' |'register';
+export type endpointType = 'carList' | 'addCar' | 'carDetails' | 'editCar' | 'imageUpload' | 'login' |'register' | 'deleteCar';

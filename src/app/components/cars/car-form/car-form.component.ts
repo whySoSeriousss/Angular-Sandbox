@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-car-form',
@@ -12,12 +14,13 @@ export class CarFormComponent implements OnInit {
   carForm?: FormGroup;
   carSlug?: string | null ='';
   selectedCar?: any;
-  carDetails?: any; 
+  carDetails: any = {}; 
 
   constructor(
     public formBuilder: FormBuilder,
     public api: ApiService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -91,29 +94,37 @@ export class CarFormComponent implements OnInit {
 
   async getCarDetails() {
 
-    // this.api.request('carDetails', 'get', undefined, slug).subscribe(car => {
-    //   this.selectedCar = car;
-    //   console.log('Edits being done on: ', this.selectedCar);
- 
-    //   if (car) {
-    //     this.carForm?.patchValue(car)
-    //     this.carDetails = car;
-    //   }
-    // });
-
     const results = await this.api.request('carDetails', 'get', undefined, this.carSlug).toPromise();
 
-    console.log('To Promise Work: ', results);
+    console.log('To Promise Works: ', results);
 
     if (results) {
       this.carForm?.patchValue(results);
       this.carDetails = results;
     }
+
   }
 
   editCar() {
-    this.api.request('editCar', 'put', this.carForm?.value, this.carSlug).subscribe(result =>{
+    this.api.request('editCar', 'put', this.carForm?.value, this.carSlug).subscribe(async (result: any) =>{
       console.log('Edit Car: ', result);
+      //Destructuring
+      // const {_id: identity, name} = result;
+      // console.log('testing destructuring:', identity, name);
+      if (result) {
+        Swal.fire('Success', 'Your Car details have been updated!', 'success').then((SwalResult) => {
+          console.log('redirectUrl: ', SwalResult);
+          if(SwalResult.value) {
+            this.router.navigate(['/cars'])
+          }
+        });
+
+        // const {value: redirectUrl} = await Swal.fire('Success', 'Your Car details have been updated!', 'success');
+        // console.log('redirectUrl: ', redirectUrl);
+        // if (redirectUrl) {
+        //   this.router.navigate(['/cars']);  
+        // }
+      }
     });
   }
 
@@ -133,6 +144,24 @@ export class CarFormComponent implements OnInit {
         this.carForm?.controls.image_car.setValue(results['secure_url']);
       })
     }
+  }
+
+  uploadFileDirective(event: any) {
+    console.log('upload file Directive', event);
+    let fileUpload = event[0];
+    const formData: FormData = new FormData();
+    formData.append('image', fileUpload); 
+
+    if(formData){
+      this.api.request('imageUpload', 'post', formData).subscribe((results:any) => {
+        //console.log("Image upload results:", results);
+        console.log('Car image details:', this.carDetails);
+        console.log("Image upload secure_url:", results['secure_url']);
+        this.carDetails.image_car = results['secure_url'];
+        this.carForm?.controls.image_car.setValue(results['secure_url']);
+      });
+    }
+
   }
 
 }

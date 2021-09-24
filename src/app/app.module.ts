@@ -20,6 +20,7 @@ import { interceptorsProviders } from './interceptors/interceptors';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import { RegisterComponent } from './components/register/register.component';
+import { UploadDirective } from './directives/upload.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RegisterComponent } from './components/register/register.component';
     ProfileComponent,
     FooterComponent,
     LoadingComponent,
-    RegisterComponent
+    RegisterComponent,
+    UploadDirective
 
   ],
   imports: [

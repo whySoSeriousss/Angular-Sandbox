@@ -87,10 +87,11 @@
                     </span>
                 </div>
 
-                <button (click)="registerUser()" [disabled]="registerForm.invalid" class="btn btn-success"><i class="fa fa-arrow-right" ></i> Proceed</button>
+                <button (click)="registerUser()" [routerLink]="['/']" [disabled]="registerForm.invalid" class="btn btn-success"><i class="fa fa-arrow-right" ></i> Proceed</button>
 
                 <button class="btn btn-danger ms-3"
                 [routerLink]="['/']"><i class="fa fa-times"></i> Cancel</button>
+                
             </form>
         </div>
 

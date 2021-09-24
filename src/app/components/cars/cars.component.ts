@@ -3,6 +3,7 @@ import { StorageService } from '../../services/storage.service';
 import { Car } from '../../models/car';
 import { DataService } from '../../services/data.service';
 import { ApiService } from 'src/app/services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cars',
@@ -49,15 +50,35 @@ export class CarsComponent implements OnInit {
     });
   }
 
-  deleteCar(ref: string) {
+  deleteCar(ref: string, id: string) {
     console.log('Reference: ', ref);
-    this.filterCarlist=this.carList.filter(car => car.ref != ref);
-    this.carList = this.filterCarlist;
-    this.storage.set('cars', this.carList);
+
+    Swal.fire({
+      title: "Are you sure?!",
+      text: "This action is irreversible.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Delete!"
+    }).then(res => {
+      if (res.isConfirmed) {
+        console.log('Car will be deleted');
+        this.api.request('deleteCar', 'delete', undefined, id).subscribe(result => {
+          console.log('Delete result: ', result);
+          if (result) {
+            this.getCars();
+          }
+        });
+
+      }
+    });
+    // this.filterCarlist=this.carList.filter(car => car.ref != ref);
+    // this.carList = this.filterCarlist;
+    // this.storage.set('cars', this.carList);
   }
 
   searchCar() {
     console.log('this.searchText', this.searchText);
+
     const text = this.searchText.toLowerCase();
     if (this.searchText){
       this.filterCarlist=this.filterCarlist.filter(car => {

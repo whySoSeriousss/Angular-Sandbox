@@ -69,6 +69,8 @@ export class NavComponent implements OnInit {
       this.storageService.set('token', recipient['token']);
       this.storageService.set('user', recipient['user']);
       this.validLogin = true;
+
+      window.location.reload();
     }
 
     });
