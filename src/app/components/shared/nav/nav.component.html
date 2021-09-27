@@ -23,7 +23,7 @@
             <a class="nav-link" [routerLink]="['cars']" routerLinkActive="active text-primary">Cars</a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="permission.hasRole(['admin'])">
             <a class="nav-link" [routerLink]="['cake']" routerLinkActive="active text-danger">Cakes</a>
           </li>
 
@@ -71,7 +71,8 @@
 
         <div *ngIf= "validLogin">
           <h5 class="loginText">Welcome {{user.first_name}} {{user.last_name}}
-            <button class="btn btn-danger" (click)="logOut()"><i class="fa fa-power-off"></i></button>
+            <span *ngIf="permission.hasRole(['admin', 'user'])"> <i class="fa fa-star text-warning"></i> </span>
+            <button class="btn btn-danger ms-2" (click)="logOut()"> <i class="fa fa-power-off"></i></button>
           </h5>
         </div>
       </div>
