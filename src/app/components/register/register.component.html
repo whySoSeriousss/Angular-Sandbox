@@ -39,13 +39,43 @@
                     <label for="password" class="form-label">Password
                     <sup class="text-danger">*</sup>
                     </label>
-                    
-                    <input formControlName="password" type="password" class="form-control" id="password" placeholder="Enter Password" [ngClass]="{'is-invalid': registerForm.controls.password.invalid && registerForm.controls.password.dirty, 
+
+                    <div class="input-group mb-3">
+                        <input formControlName="password" [type]="hidePassword ? 'password': 'text'" class="form-control" id="password" placeholder="Enter Password" [ngClass]="{'is-invalid': registerForm.controls.password.invalid && registerForm.controls.password.dirty, 
                     'is-valid': registerForm.controls.password.valid}">
+                        <span (click)="hidePassword = !hidePassword" class="input-group-text" id="basic-addon2"><i *ngIf="hidePassword" class="fa fa-eye"></i>
+                        
+                            <i *ngIf="!hidePassword" class="fa fa-eye-slash"></i>
+                        </span>
+                    </div>
 
                     <span *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.dirty" class="text-danger">
                         Password is a required Field!
                     </span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label"> Confirm Password
+                    <sup class="text-danger">*</sup>
+                    </label>
+                    
+                    <div class="input-group mb-3">
+                        <input formControlName="confirm_password" [type]="hideConfirm ? 'password': 'text'" class="form-control" id="confirm_password" placeholder="Enter Password" [ngClass]="{'is-invalid': registerForm.controls.confirm_password.invalid && registerForm.controls.confirm_password.dirty, 
+                    'is-valid': registerForm.controls.confirm_password.valid}">
+                        <span (click)="hideConfirm = !hideConfirm" class="input-group-text" id="basic-addon2"><i *ngIf="hideConfirm" class="fa fa-eye"></i>
+
+                        <i *ngIf="!hideConfirm" class="fa fa-eye-slash"></i>
+                        
+                        </span>
+                    </div>
+
+                    <span *ngIf="registerForm.errors?.notSame" class="text-danger">
+                        Passwords do not match!
+                    </span>
+
+                    <!-- <span *ngIf="registerForm.controls.confirm_password.invalid && registerForm.controls.confirm_password.dirty" class="text-danger">
+                        Passwords do not match!
+                    </span> -->
                 </div>
 
                 <div class="mb-3">
@@ -86,6 +116,26 @@
                         Phone is a required Field!
                     </span>
                 </div>
+
+                <p>
+                    Registration form errors: {{registerForm.errors | json}}
+                </p>
+
+                <p>
+                    Registration value: {{registerForm.value | json}}
+                </p>
+
+                <p>
+                    UpperCase: {{'uppercase text' | uppercase}}
+                </p>
+
+                <p>
+                    Percentage: {{'69' | percent}}
+                </p>
+
+                <p>
+                    Date: {{'2012-12-06' | date: 'dd/MM/MMMM/yyyy HH:mm:ss'}}
+                </p>
 
                 <button (click)="registerUser()" [routerLink]="['/']" [disabled]="registerForm.invalid" class="btn btn-success"><i class="fa fa-arrow-right" ></i> Proceed</button>
 

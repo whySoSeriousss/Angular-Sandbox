@@ -74,3 +74,8 @@ footer {
   @extend .text-center;
   @extend .text-muted;
 }
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
