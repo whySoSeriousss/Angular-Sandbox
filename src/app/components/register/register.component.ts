@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   phone?: string;
   validator?: object;
   validRegister: boolean = false;
+  hidePassword: boolean = true;
+  hideConfirm: boolean = true;
   
   constructor(
     public formBuilder: FormBuilder,
@@ -29,12 +31,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      confirm_password: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       phone: ['', Validators.required]
-    });
+
+    }, { validators: this.comparePasswords });
 
     if (this.storageService.get('token') && this.storageService.get('user')){
 
@@ -57,4 +61,15 @@ export class RegisterComponent implements OnInit {
       }
     });    
   }
+
+  comparePasswords(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const confirm_password = group.get('confirm_password')?.value;
+    return password  === confirm_password 
+    ? null : {notSame: true};
+  }
+
+  
+
+
 }
