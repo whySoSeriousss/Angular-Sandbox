@@ -21,6 +21,8 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 import { NgxLoadingModule } from 'ngx-loading';
 import { RegisterComponent } from './components/register/register.component';
 import { UploadDirective } from './directives/upload.directive';
+import { UsersComponent } from './components/users/users.component';
+import { CardListTemplateComponent } from './components/shared/card-list-template/card-list-template.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { UploadDirective } from './directives/upload.directive';
     FooterComponent,
     LoadingComponent,
     RegisterComponent,
-    UploadDirective
+    UploadDirective,
+    UsersComponent,
+    CardListTemplateComponent
 
   ],
   imports: [

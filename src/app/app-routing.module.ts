@@ -6,6 +6,7 @@ import { CarsComponent } from './components/cars/cars.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UsersComponent } from './components/users/users.component';
 import { AuthGuard } from './guards/auth.guard';
 
 
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'cars/add', component: CarFormComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'car/edit/:slug', component: CarFormComponent},
-  {path: 'register/signup', component: RegisterComponent } 
+  {path: 'register/signup', component: RegisterComponent },
+  {path: 'users', component: UsersComponent}
 
 ];
 

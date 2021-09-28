@@ -1,0 +1,26 @@
+<h4>{{entity}}</h4>
+<div class="row row-cols-3">
+    <div class="col" *ngFor="let item of list; let i = index" >
+        <div class="card card-template mb-3" *ngIf="entity == 'user'">
+            <div class="card-body">
+                <h5 class="card-title">{{item.first_name}} {{item.last_name}}</h5>
+                <p class="card-text"><i class="fa fa-envelope-o"></i> {{item.email}}</p>
+                <p class="card-text"><i class="fa fa-phone-square"></i> {{item.phone}}</p>
+                <p class="card-text text-muted"><i class="fa fa-user-circle"></i> {{item.role}}</p>
+            </div>
+        </div>
+
+        
+
+        <div class="card card-template mb-3" *ngIf="entity == 'cars'" [ngClass]="{'bg-primary': !(i%2)}">
+            <div class="card card-template mb-3" *ngIf="entity == 'cars'"  >
+            <img [src]="item.image_car" class="card-img-top" alt="{{item.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}} 
+            <app-modal [carDetails]="item"></app-modal>
+          </h5>
+          <p class="card-text">{{item.desc_excerpt}}</p>
+          <a [routerLink]="['/car/edit/', item.slug]" class="btn btn-primary"><i class="fa fa-pencil me-2"></i>Edit</a>
+        </div>
+    </div>
+</div>
