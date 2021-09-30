@@ -23,6 +23,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UploadDirective } from './directives/upload.directive';
 import { UsersComponent } from './components/users/users.component';
 import { CardListTemplateComponent } from './components/shared/card-list-template/card-list-template.component';
+import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CardListTemplateComponent } from './components/shared/card-list-templat
     RegisterComponent,
     UploadDirective,
     UsersComponent,
-    CardListTemplateComponent
+    CardListTemplateComponent,
+    UserDetailsComponent
 
   ],
   imports: [

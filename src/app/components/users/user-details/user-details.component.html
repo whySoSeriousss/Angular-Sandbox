@@ -1,0 +1,26 @@
+<!-- .card>.card-body>.card-title+.card-text.h6+.card-text -->
+<div class="card my-1">
+    <div class="card-body">
+        <p class="card-title">
+            Name: {{userDetails?.first_name}} {{userDetails?.last_name}}
+        </p>
+        <p class="card-text h6">
+            <i class="fa fa-envelope"></i>
+            Email: {{userDetails?.email}} 
+        </p>
+        <p class="card-text">
+            <i class="fa fa-phone"></i>
+            {{userDetails?.phone}}
+        </p>
+        <p class="card-text">
+            <i class="fa fa-user-circle-o"></i>
+            {{userDetails?.role}}
+        </p>
+        <hr>
+        <p class="card-text">
+            <small>
+                Registration date: {{userDetails?.register_date | date: 'dd/MM/yyyy'}}
+            </small>
+        </p>
+    </div>
+</div>

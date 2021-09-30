@@ -1,4 +1,13 @@
-<div class="container my-5">
-    <app-card-list-template *ngIf="userList.length" [list]="userList" [entity]="'user'"></app-card-list-template>
+<div class="container">
+    <div class="row">
+        <div class="col-7">
+            <app-card-list-template *ngIf="userList.length" [list]="userList" [entity]="'user'"></app-card-list-template>
+        </div>
+        <div class="col-5 pt-2 mt-1">
+            User Details
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    
 </div>
 

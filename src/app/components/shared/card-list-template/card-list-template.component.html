@@ -1,9 +1,15 @@
 <h4>{{entity}}</h4>
-<div class="row row-cols-3">
+
+<div class="row row-cols-2" [ngClass]="{'row-cols-3': entity=='cars', 'row-cols-2': entity=='user' }">
     <div class="col" *ngFor="let item of list; let i = index" >
         <div class="card card-template mb-3" *ngIf="entity == 'user'">
             <div class="card-body">
-                <h5 class="card-title">{{item.first_name}} {{item.last_name}}</h5>
+                <h5 class="card-title">
+                    {{item.first_name}} {{item.last_name}}
+                    <button class="btn btn-info btn-sm ms-2" [routerLink]="['/users/view/', item._id]">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </h5>
                 <p class="card-text"><i class="fa fa-envelope-o"></i> {{item.email}}</p>
                 <p class="card-text"><i class="fa fa-phone-square"></i> {{item.phone}}</p>
                 <p class="card-text text-muted"><i class="fa fa-user-circle"></i> {{item.role}}</p>
