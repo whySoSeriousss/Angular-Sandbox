@@ -24,6 +24,7 @@ import { UploadDirective } from './directives/upload.directive';
 import { UsersComponent } from './components/users/users.component';
 import { CardListTemplateComponent } from './components/shared/card-list-template/card-list-template.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
+import { UserFormComponent } from './components/users/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     UploadDirective,
     UsersComponent,
     CardListTemplateComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserFormComponent
 
   ],
   imports: [

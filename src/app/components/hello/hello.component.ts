@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { roundedDecorator } from 'src/app/decorators/roundedDecorators';
 import *  as env from '../../../environments/environment';
 
 @Component({
@@ -18,7 +19,9 @@ export class HelloComponent implements OnInit {
     {title: 'Book 1', description: 'description 1'},
     {title: 'Book 2', description: 'description 2'},
     {title: 'Book 3', description: 'description 3'},
-  ]
+  ];
+
+  @roundedDecorator() roundNumber = 3.2;
 
   //methods
   constructor() { }
@@ -26,6 +29,7 @@ export class HelloComponent implements OnInit {
   ngOnInit(): void {
     console.log('title.value', this.title);
     this.obj = {name: 'true', hours: 5};
+    console.log('Rounded Number: ', this.roundNumber)
   }
 
 

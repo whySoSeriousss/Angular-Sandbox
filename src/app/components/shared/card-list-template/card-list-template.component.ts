@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PermissionService } from 'src/app/services/permission.service';
 
 @Component({
   selector: 'app-card-list-template',
@@ -10,7 +11,9 @@ export class CardListTemplateComponent implements OnInit {
   @Input() list: any[] = [];
   @Input() entity: string = "";
 
-  constructor() { }
+  constructor(
+    public permission: PermissionService
+  ) { }
 
   ngOnInit(): void {
     console.log('list content:', this.list);

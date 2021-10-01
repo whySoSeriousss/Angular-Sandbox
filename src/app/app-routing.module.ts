@@ -7,6 +7,7 @@ import { HelloComponent } from './components/hello/hello.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
+import { UserFormComponent } from './components/users/user-form/user-form.component';
 import { UsersComponent } from './components/users/users.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BlockChildRouteGuard } from './guards/block-child-route.guard';
@@ -23,7 +24,9 @@ const routes: Routes = [
     {path: 'view/:id', component: UserDetailsComponent},
     // {path: 'hello', component: HelloComponent}
   ]},
+  {path: 'user/edit/:id', component: UserFormComponent},
   {path: '**', redirectTo: 'cars'}
+
 ];
 
 @NgModule({

@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+            <h5><i class="fa fa-user-circle me-2"></i>Edit User</h5>
+        </div>
+        <div class="card-body">
+            <form *ngIf="userForm" [formGroup]="userForm">
+                <div class="mb-3" *ngFor="let field of fields;">
+                    <label [for]="field" class="form-label">{{getLabel(field)}}</label>
+                    <input type="text" [formControlName]="field" class="form-control" [id]="field" aria-describedby="emailHelp">
+                    <div id="#" class="form-text is-invalid text-danger" *ngIf="userForm.get(field)?.hasError('required')">{{getLabel(field) | titlecase}} is Required!</div>
+                </div>
+
+                <div class="mb-3 text-end">
+                    <button (click)="editUser()" class="btn btn-success">
+                        <i class="fa fa-plane"> Save</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
