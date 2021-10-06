@@ -1,0 +1,34 @@
+  <button class="btn btn-dark btn-sm ms-2"   (click)="openModal(modalTemplate)">
+    <i class="fa fa-eye"></i>
+</button>
+
+  <ng-template #modalTemplate>
+            <div class="modal-header">
+              <h5 class="modal-title">{{starshipDetails?.name}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalRef.hide()"></button>
+            </div>
+            <div class="modal-body">
+                <p class="card-text h6">
+                    <i class="fa fa-check"></i>
+                    Length: {{starshipDetails?.length}} 
+                </p>
+                <p class="card-text">
+                    <i class="fa fa-plane"></i>
+                    {{starshipDetails?.max_atmosphering_speed}}
+                </p>
+                <p class="card-text">
+                    <i class="fa fa-plane"></i>
+                    {{starshipDetails?.hyperdrive_rating}}
+                </p>
+                <hr>
+                <p class="card-text">
+                    <i class="fa fa-apple"></i>
+                    <small>
+                        Consumables: {{starshipDetails?.consumables}}
+                    </small>
+                </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalRef.hide()">Close</button>
+            </div>
+  </ng-template>

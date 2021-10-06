@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+        <p class="card-title">
+            {{starshipDetails?.name}}
+        </p>
+        <p class="card-text h6">
+            <i class="fa fa-check"></i>
+            Length: {{starshipDetails?.length}} 
+        </p>
+        <p class="card-text">
+            <i class="fa fa-plane"></i>
+            {{starshipDetails?.max_atmosphering_speed}}
+        </p>
+        <p class="card-text">
+            <i class="fa fa-plane"></i>
+            {{starshipDetails?.hyperdrive_rating}}
+        </p>
+        <hr>
+        <p class="card-text">
+            <i class="fa fa-apple"></i>
+            <small>
+                Consumables: {{starshipDetails?.consumables}}
+            </small>
+        </p>
+    </div>
+</div>

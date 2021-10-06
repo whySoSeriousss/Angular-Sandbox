@@ -17,7 +17,7 @@ export class CModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('cakeDetails', this.cakeDetails);
+    // console.log('cakeDetails', this.cakeDetails);
   }
 
   openModal(Template: TemplateRef<any>) {

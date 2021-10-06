@@ -6,6 +6,8 @@ import { CarsComponent } from './components/cars/cars.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { StarshipDetailsComponent } from './components/starships/starship-details/starship-details.component';
+import { StarshipsComponent } from './components/starships/starships.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserFormComponent } from './components/users/user-form/user-form.component';
 import { UsersComponent } from './components/users/users.component';
@@ -20,11 +22,14 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'car/edit/:slug', component: CarFormComponent},
   {path: 'register/signup', component: RegisterComponent },
-  {path: 'users', component: UsersComponent, canActivateChild: [BlockChildRouteGuard], children: [
+  {path: 'users', component: UsersComponent, canActivateChild: [BlockChildRouteGuard],  children: [
     {path: 'view/:id', component: UserDetailsComponent},
     // {path: 'hello', component: HelloComponent}
   ]},
   {path: 'user/edit/:id', component: UserFormComponent},
+  {path: 'starships', component: StarshipsComponent, children: [
+    {path: 'view/:name', component: StarshipDetailsComponent}
+  ]},
   {path: '**', redirectTo: 'cars'}
 
 ];

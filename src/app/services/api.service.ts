@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   baseUrl = 'https://test-marketplace-api.herokuapp.com/api/';
+  baseUrl1 = 'https://swapi.dev/api/';
 
   constructor(
     public http : HttpClient
@@ -25,7 +26,10 @@ export class ApiService {
    deleteCar:(id:string) => `${this.baseUrl}car/delete/${id}`,
    userList: `${this.baseUrl}user/list`,
    userDetails: (id: string) => `${this.baseUrl}user/get/${id}`,
-   editUser: (id: string) => `${this.baseUrl}user/edit/${id}`
+   editUser: (id: string) => `${this.baseUrl}user/edit/${id}`,
+   starshipList: `${this.baseUrl1}/starships`,
+   starshipDetails: (name: string) => `${this.baseUrl1}starships/view/${name}`,
+   starshipForm: (name: string) => `${this.baseUrl1}starships/add/${name}`
  };
 
  getCarList(): Observable<any> {
@@ -47,4 +51,4 @@ export class ApiService {
 
 }
 
-export type endpointType = 'carList' | 'addCar' | 'carDetails' | 'editCar' | 'imageUpload' | 'login' |'register' | 'deleteCar' | 'userList' | 'userDetails' | 'editUser';
+export type endpointType = 'carList' | 'addCar' | 'carDetails' | 'editCar' | 'imageUpload' | 'login' |'register' | 'deleteCar' | 'userList' | 'userDetails' | 'editUser' | 'starshipList' | 'starshipDetails' | 'starshipForm';

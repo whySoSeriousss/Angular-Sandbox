@@ -25,6 +25,9 @@ import { UsersComponent } from './components/users/users.component';
 import { CardListTemplateComponent } from './components/shared/card-list-template/card-list-template.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserFormComponent } from './components/users/user-form/user-form.component';
+import { StarshipsComponent } from './components/starships/starships.component';
+import { StarshipDetailsComponent } from './components/starships/starship-details/starship-details.component';
+import { StarModalComponent } from './components/shared/star-modal/star-modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { UserFormComponent } from './components/users/user-form/user-form.compon
     UsersComponent,
     CardListTemplateComponent,
     UserDetailsComponent,
-    UserFormComponent
+    UserFormComponent,
+    StarshipsComponent,
+    StarshipDetailsComponent,
+    StarModalComponent
 
   ],
   imports: [

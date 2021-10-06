@@ -20,8 +20,8 @@ export class ModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('carDetails', this.carDetails);
-    console.log('cakeDetails', this.cakeDetails);
+    // console.log('carDetails', this.carDetails);
+    // console.log('cakeDetails', this.cakeDetails);
 
   }
 

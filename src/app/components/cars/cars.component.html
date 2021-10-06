@@ -26,25 +26,23 @@
         <i class="fa fa-plus"></i> CAR
       </button>
     </div>
-    
-
   </div>
 
 
-<div class="card-container mb-5 mt-3" *ngIf="!show">
-  <app-card-list-template [list]="filterCarlist" [entity]="'cars'"></app-card-list-template>
-    <!-- <div class="row row-cols-3">
-      <div class="card col" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2)}">
-        <img [src]="car.image_car" class="card-img-top" alt="{{car.name}}">
-        <div class="card-body">
-          <h5 class="card-title">{{car.name}} 
-            <app-modal [carDetails]="car"></app-modal>
-          </h5>
-          <p class="card-text">{{car.desc_excerpt}}</p>
-          <a [routerLink]="['/car/edit/', car.slug]" class="btn btn-primary"><i class="fa fa-pencil me-2"></i>Edit</a>
+  <div class="card-container mb-5 mt-3" *ngIf="!show">
+    <app-card-list-template [list]="filterCarlist" [entity]="'cars'"></app-card-list-template>
+      <!-- <div class="row row-cols-3">
+        <div class="card col" *ngFor="let car of filterCarlist; let i=index" [ngClass]="{'bg-success': !(i%2)}">
+          <img [src]="car.image_car" class="card-img-top" alt="{{car.name}}">
+          <div class="card-body">
+            <h5 class="card-title">{{car.name}} 
+              <app-modal [carDetails]="car"></app-modal>
+            </h5>
+            <p class="card-text">{{car.desc_excerpt}}</p>
+            <a [routerLink]="['/car/edit/', car.slug]" class="btn btn-primary"><i class="fa fa-pencil me-2"></i>Edit</a>
+          </div>
         </div>
-      </div>
-    </div> -->
+      </div> -->
   </div>
 
 
@@ -69,7 +67,7 @@
           <td>
             <ng-template #btnDelete>
               <p>
-                Lorem Ipsum is simply dummy text of the <span class="text-danger">printing and typesetting</span> industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the <span class="text-danger">printing and typesetting</span> industry.
               </p>
             </ng-template>
             <button class="btn btn-sm btn-danger" (click)="deleteCar(car.ref, car._id)" [tooltip]="btnDelete">Delete</button>
