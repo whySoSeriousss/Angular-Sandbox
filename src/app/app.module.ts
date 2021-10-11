@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { CModalComponent } from './components/shared/c-modal/c-modal.component';
 import { CarFormComponent } from './components/cars/car-form/car-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+
 import { interceptorsProviders } from './interceptors/interceptors';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { NgxLoadingModule } from 'ngx-loading';
@@ -28,6 +30,11 @@ import { UserFormComponent } from './components/users/user-form/user-form.compon
 import { StarshipsComponent } from './components/starships/starships.component';
 import { StarshipDetailsComponent } from './components/starships/starship-details/starship-details.component';
 import { StarModalComponent } from './components/shared/star-modal/star-modal.component';
+import { UiLabsComponent } from './components/ui-labs/ui-labs.component';
+import { ChatComponent } from './components/shared/chat/chat.component';
+import { ChatModalComponent } from './components/shared/chat-modal/chat-modal.component';
+
+const wsConfig: SocketIoConfig = {url: 'https://sdworx-socket-sandbox.herokuapp.com', options: {}}
 
 @NgModule({
   declarations: [
@@ -50,7 +57,10 @@ import { StarModalComponent } from './components/shared/star-modal/star-modal.co
     UserFormComponent,
     StarshipsComponent,
     StarshipDetailsComponent,
-    StarModalComponent
+    StarModalComponent,
+    UiLabsComponent,
+    ChatComponent,
+    ChatModalComponent
 
   ],
   imports: [
@@ -61,10 +71,10 @@ import { StarModalComponent } from './components/shared/star-modal/star-modal.co
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     HttpClientModule,
-    NgxLoadingModule.forRoot({})
-    
-  
+    NgxLoadingModule.forRoot({}),
+    SocketIoModule.forRoot(wsConfig)
   ],
+  
   providers: [interceptorsProviders],
   bootstrap: [AppComponent]
 })

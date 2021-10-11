@@ -29,7 +29,6 @@ export class ApiService {
    editUser: (id: string) => `${this.baseUrl}user/edit/${id}`,
    starshipList: `${this.baseUrl1}/starships`,
    starshipDetails: (name: string) => `${this.baseUrl1}starships/view/${name}`,
-   starshipForm: (name: string) => `${this.baseUrl1}starships/add/${name}`
  };
 
  getCarList(): Observable<any> {
@@ -51,4 +50,4 @@ export class ApiService {
 
 }
 
-export type endpointType = 'carList' | 'addCar' | 'carDetails' | 'editCar' | 'imageUpload' | 'login' |'register' | 'deleteCar' | 'userList' | 'userDetails' | 'editUser' | 'starshipList' | 'starshipDetails' | 'starshipForm';
+export type endpointType = 'carList' | 'addCar' | 'carDetails' | 'editCar' | 'imageUpload' | 'login' |'register' | 'deleteCar' | 'userList' | 'userDetails' | 'editUser' | 'starshipList' | 'starshipDetails';

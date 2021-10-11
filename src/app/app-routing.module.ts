@@ -6,8 +6,10 @@ import { CarsComponent } from './components/cars/cars.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ChatComponent } from './components/shared/chat/chat.component';
 import { StarshipDetailsComponent } from './components/starships/starship-details/starship-details.component';
 import { StarshipsComponent } from './components/starships/starships.component';
+import { UiLabsComponent } from './components/ui-labs/ui-labs.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserFormComponent } from './components/users/user-form/user-form.component';
 import { UsersComponent } from './components/users/users.component';
@@ -30,6 +32,8 @@ const routes: Routes = [
   {path: 'starships', component: StarshipsComponent, children: [
     {path: 'view/:name', component: StarshipDetailsComponent}
   ]},
+  {path: 'uilabs', component: UiLabsComponent},
+  {path: 'chat', component: ChatComponent},
   {path: '**', redirectTo: 'cars'}
 
 ];

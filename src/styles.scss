@@ -14,7 +14,8 @@ $indigo: #6610f2;
   .nav-link,
   .nav-brand,
   .loginText,
-  .regBtn {
+  .regBtn,
+  .chatBtn {
     color: $black !important;
   }
 }
@@ -23,7 +24,8 @@ $indigo: #6610f2;
   @extend .navbar-dark;
   @extend .bg-danger;
 
-  .regBtn {
+  .regBtn,
+  .chatBtn {
     color: $black !important;
   }
 }
@@ -35,18 +37,19 @@ $indigo: #6610f2;
   .nav-link,
   .nav-brand,
   .loginText,
-  .regBtn {
+  .regBtn,
+  .chatBtn {
     color: $crimson !important;
   }
 }
 
 .theme-indigo {
   background-color: $indigo;
-  color: $indigo;
   .nav-link,
   .nav-brand,
   .loginText,
-  .regBtn {
+  .regBtn,
+  .chatBtn {
     color: rgb(255, 255, 255) !important;
   }
 }
@@ -94,6 +97,176 @@ input::-ms-clear {
   background-size: cover;
 }
 
-// .starcard {
-//   min-width: none;
-// }
+.fade-card {
+  background: burlywood;
+  @extend .text-light;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.color-card {
+  background: firebrick;
+  @extend .text-light;
+  &:hover {
+    background: deepskyblue;
+  }
+}
+
+.grow-card {
+  background: mediumaquamarine;
+  @extend .text-light;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
+.shrink-card {
+  background: olivedrab;
+  @extend .text-light;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(0.8);
+  }
+}
+
+.rotate-card {
+  background: papayawhip;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: rotateZ(-30deg);
+  }
+}
+
+.square2circle-card {
+  background: saddlebrown;
+  @extend .text-light;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-radius: 50%;
+  }
+}
+
+.threed-card {
+  background: lavenderblush;
+  @extend .text-light;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 1px 1px deepskyblue, 2px 2px deepskyblue, 3px 3px deepskyblue;
+
+    transform: translateX();
+  }
+}
+
+.swing-card {
+  background: navajowhite;
+  transition: all 0.3s ease;
+
+  &:hover {
+    animation: swing 1s ease;
+    animation-iteration-count: 1;
+  }
+}
+
+@keyframes swing {
+  15% {
+    transform: translateX(5px);
+  }
+  30% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  65% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.inset-card {
+  background: blanchedalmond;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: inset 0 0 0 10px darkgoldenrod;
+  }
+}
+
+.loading-button {
+  animation: bouncing 0.5s cubic-bezier(0.1, 0.25, 0.1, 1) 0s infinite alternate
+    both;
+}
+
+@keyframes bouncing {
+  0% {
+    bottom: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    bottom: 50px;
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.chat {
+  position: sticky;
+  top: 90%;
+  -webkit-transform: translateY(-40%);
+  -ms-transform: translateY(-40%);
+  transform: translateY(-40%);
+}
+
+.chatBtn {
+  border-radius: 50%;
+  border: $black;
+  width: 90px;
+  height: 90px;
+}
+
+.modal-xl-dialog {
+  min-width: 100%;
+  height: 60%;
+}
+
+.modal-content {
+  position: relative;
+  bottom: 0;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.8s;
+  animation-name: slideIn;
+  animation-duration: 0.8s;
+  width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    bottom: -300px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    bottom: -300px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}

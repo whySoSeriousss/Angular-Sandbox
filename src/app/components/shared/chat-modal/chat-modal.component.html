@@ -1,0 +1,64 @@
+<button class="btn btn-light border border-danger me-2 chatBtn" (click)="openModal(ModalTemplate)" [tooltip]="chatTooltip" [ngClass]="{'theme-blue': currentTheme=='blue', 
+'theme-dark': currentTheme=='dark', 
+'theme-danger': currentTheme=='danger',
+'theme-indigo': currentTheme=='indigo'}">
+    <i class="fa fa-comments"></i>
+</button>
+
+<!-- <p *ngIf="!open_modal && popup_modal">
+    {{openModal(ModalTemplate)}}
+</p> -->
+
+
+  <ng-template #ModalTemplate>
+  
+    <div class="modal-xl-dialog modal-dialog-scrollable overflow-auto">
+
+        <!-- <div class="modal-dialog"> -->
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title">Reach us Instantly</h5>
+              <button (click)="modalRef.hide()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="container my-2">
+                    <div class="row row-cols-2">
+                        <ng-container *ngFor="let msg of messages">
+                            <div class="col-3 text-end">{{msg?.username}} :</div>
+                            <div class="col-9 text-{{msg.color}} bg-{{msg.bgColor}}">{{msg.message}}</div>
+                        </ng-container>
+                     </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3 mt-3">
+                            <input type="text" class="form-control" placeholder="Type a Message.." [(ngModel)]="message" (keyup.enter)="sendMessage()">
+                            <span class="input-group-text" id="basic-addon2" (click)="sendMessage()">
+                            <i class="fa fa-paper-plane me-2"></i> Send
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <hr> -->
+                <!-- ul.row.row-cols-2>ng-container>li.col*2 -->
+                <!-- <ul class="row row-cols-2">
+                <ng-container *ngFor="let item of list$ | async">
+                    <li class="col">{{item.username}}</li>
+                    <li class="col">{{item.message}}</li>
+                </ng-container>
+                </ul>  -->
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
+  </ng-template>
+
+  <ng-template #chatTooltip>
+    <p class="text-danger">
+        Chat with us!
+    </p>
+  </ng-template>
