@@ -1,6 +1,14 @@
 <button class="btn btn-light" (click)="openModal(modalTemplate)">
     <i class="fa fa-eye"></i>
-  </button>
+</button>
+
+<!-- <button *ngIf="!clickedFav" class="btn btn-light ms-2 fav" [tooltip]="fav" (click)="clickFav()">
+  <i class="fa fa-heart-o" *ngIf="!storage.get(cars.name)" (click)="addToFavorite(cars.name)"></i>
+</button>
+
+<button *ngIf="clickedFav" (click)="removeFromFav()" class="btn btn-light ms-2 fav" [tooltip]="fav">
+  
+</button> -->
 
   <ng-template #modalTemplate>
             <div class="modal-header">
@@ -15,3 +23,6 @@
               <button type="button" class="btn btn-primary">Save changes</button>
             </div>
   </ng-template>
+
+
+

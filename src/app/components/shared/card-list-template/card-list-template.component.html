@@ -47,6 +47,12 @@
                 <div class="card-body">
                 <h5 class="card-title">{{item.name}} 
                 <app-modal [carDetails]="item"></app-modal>
+                
+                <i class="fa fa-heart ms-3 fav" *ngIf="storage.get(item.name)" (click)="removeFavorite(item)" [tooltip]="r_fav"></i>
+                 
+                <i class="fa fa-heart-o ms-3 fav" (click)="addToFavorite(item)" *ngIf="!storage.get(item.name)" [tooltip]="fav"></i>
+                
+
                 </h5>
                 <p class="card-text">{{item.desc_excerpt}}</p>
                 <a [routerLink]="['/car/edit/', item.slug]" class="btn btn-primary"><i class="fa fa-pencil me-2"></i>Edit</a>
@@ -54,6 +60,17 @@
             </div>
         </div>
 
+        <ng-template #fav>
+            <p>
+               Add To <span class="text-danger">Favorites!</span> 
+            </p>
+        </ng-template>
+
+        <ng-template #r_fav>
+            <p>
+               Remove From <span class="text-danger">Favorites!</span> 
+            </p>
+        </ng-template>
 
 
     </div>

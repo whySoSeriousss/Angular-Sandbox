@@ -17,7 +17,7 @@ export class ChatModalComponent implements OnInit {
   modalRef: BsModalRef = new BsModalRef;
   message?: string;
   messages: any[] = [];
-  username: string = "Taroon";
+  username: string = "Test-User";
   color: string = "warning";
   bgColor: string = "dark";
   list$ = this.chatService.messages.pipe(

@@ -270,3 +270,46 @@ input::-ms-clear {
     opacity: 1;
   }
 }
+
+.fav {
+  display: inline;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0;
+
+  &:hover {
+    color: #dc3232;
+  }
+  &.is_animating {
+    animation: favme-animate 0.3s;
+  }
+}
+
+@keyframes fav-animate {
+  0% {
+    opacity: 1;
+    font-size: ms(0);
+    -webkit-text-stroke-color: transparent;
+  }
+  25% {
+    opacity: 0.6;
+    color: #fff;
+    font-size: ms(-2);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dc3232;
+  }
+  75% {
+    opacity: 0.6;
+    color: #fff;
+    font-size: ms(3);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dc3232;
+  }
+  100% {
+    opacity: 1;
+    font-size: ms(2);
+    -webkit-text-stroke-color: transparent;
+  }
+}
