@@ -26,7 +26,6 @@ export class CardListTemplateComponent implements OnInit {
     console.log('list content:', this.list);
   }
 
-
   addToFavorite(car:Car){
 
     this.storage.set(car.name,true);
@@ -36,5 +35,5 @@ export class CardListTemplateComponent implements OnInit {
   removeFavorite(car:Car){
 
     this.storage.delete(car.name);
-}
+  }
 }

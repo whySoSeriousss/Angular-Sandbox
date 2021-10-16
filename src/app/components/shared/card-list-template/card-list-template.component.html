@@ -3,25 +3,25 @@
 <div class="row row-cols-2" [ngClass]="{'row-cols-3': entity=='cars',  'row-cols-2': entity=='user' || entity=='Starships'}">
     <div class="col" *ngFor="let item of list; let i = index" >
 
-            <div class="card card-template mb-3" *ngIf="entity=='Starships'" >
-                <div class="card-body">
-                    <h5 class="card-title">{{item.name}}
-                        <ng-template #starshipTooltip>
-                            <p>
-                            <span class="text-light">Explore Starship Further</span> 
-                            </p>
-                          </ng-template>
+        <div class="card card-template mb-3" *ngIf="entity=='Starships'" >
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}
+                    <ng-template #starshipTooltip>
+                        <p>
+                        <span class="text-light">Explore Starship Further</span> 
+                        </p>
+                    </ng-template>
 
-                        <app-star-modal [starshipDetails]="item"></app-star-modal>
-                    </h5>
-                    <p class="card-text"><i class="fa fa-plane"></i> Model: {{item.model}}</p>
-                    <p class="card-text"><i class="fa fa-wrench"></i> {{item.manufacturer}}</p>
-                    <p class="card-text"><i class="fa fa-cube"></i> Cargo: {{item.cargo_capacity}}</p>
-                    <hr>
-                    <p class="card-text"><i class="fa fa-universal-access me-2"></i> Accomodations <br>
-                    Crew: {{item.crew}} | Passengers: {{item.passengers}}</p>
-                </div>
+                <app-star-modal [starshipDetails]="item"></app-star-modal>
+                </h5>
+                <p class="card-text"><i class="fa fa-plane"></i> Model: {{item.model}}</p>
+                <p class="card-text"><i class="fa fa-wrench"></i> {{item.manufacturer}}</p>
+                <p class="card-text"><i class="fa fa-cube"></i> Cargo: {{item.cargo_capacity}}</p>
+                <hr>
+                <p class="card-text"><i class="fa fa-universal-access me-2"></i> Accomodations <br>
+                Crew: {{item.crew}} | Passengers: {{item.passengers}}</p>
             </div>
+        </div>
        
 
         <div class="card card-template mb-3" *ngIf="entity=='user'">
@@ -48,11 +48,14 @@
                 <h5 class="card-title">{{item.name}} 
                 <app-modal [carDetails]="item"></app-modal>
                 
-                <i class="fa fa-heart ms-3 fav" *ngIf="storage.get(item.name)" (click)="removeFavorite(item)" [tooltip]="r_fav"></i>
-                 
-                <i class="fa fa-heart-o ms-3 fav" (click)="addToFavorite(item)" *ngIf="!storage.get(item.name)" [tooltip]="fav"></i>
+                <button class="btn btn-light ms-2 favBtn" *ngIf="storage.get(item.name)" (click)="removeFavorite(item)" [tooltip]="r_fav">
+                    <i class="fa fa-heart fav" ></i>
+                </button>
                 
-
+                <button class="btn btn-light ms-2 favBtn" (click)="addToFavorite(item)" *ngIf="!storage.get(item.name)" [tooltip]="fav">
+                     <i class="fa fa-heart-o fav" ></i>
+                </button>
+                
                 </h5>
                 <p class="card-text">{{item.desc_excerpt}}</p>
                 <a [routerLink]="['/car/edit/', item.slug]" class="btn btn-primary"><i class="fa fa-pencil me-2"></i>Edit</a>
@@ -71,7 +74,6 @@
                Remove From <span class="text-danger">Favorites!</span> 
             </p>
         </ng-template>
-
 
     </div>
 </div>

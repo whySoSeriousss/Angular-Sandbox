@@ -282,8 +282,11 @@ input::-ms-clear {
   &:hover {
     color: #dc3232;
   }
+}
+
+.favBtn {
   &.is_animating {
-    animation: favme-animate 0.3s;
+    animation: fav-animate 0.3s;
   }
 }
 
